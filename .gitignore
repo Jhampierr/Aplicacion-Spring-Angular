@@ -1,0 +1,18 @@
+# Node (Angular)
+node_modules/
+dist/
+.angular/
+
+# Java (Spring Boot / Maven / Gradle)
+target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+/.idea
+/.vscode
+
+# Sistema
+.DS_Store
+.env

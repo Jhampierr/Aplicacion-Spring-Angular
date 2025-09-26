@@ -1,0 +1,79 @@
+*mysql
+root
+(vacio)
+
+03 Java FullStack: Spring Boot y Angular para Principiantes
+Proyecto login (Spring Security con JWT)
+Spring Boot -v -> 3.5.6 	( curso 3.2.3)
+Node -v -> 22.14.0 	( curso 20.12.1)
+npm -v -> 10.9.2 	( curso 10.5.0)
+ng v -> CLI 19.2.3	( curso 17.3.3)
+
+/*****DEPENDENCIAS 
+(Lo que agrego al crear en spring initializr)
+Spring Web
+Spring Data JPA
+Spring Security
+Validation
+Lombok
+MySQL Driver
+
+(Se agrego manual, de la web)
+jjwt-api
+jjwt-impl
+jjwt-jackson
+*****/
+
+1 BackEnd - Spring Boot
+
+Al ejecutar el back en spring se crea las tablas en las tablas en la BD gracias a Hibernate
+
+entities
+@Entity -> import jakarta.persistence.Entity;
+@Data -> import lombok.Data;
+
+repositories (DAO) -> Jala entities
+services
+services->impl 	-> Jala services y repositories 
+controllers	-> Jala services
+@RestController -> Datos en formato json
+@RequestMapping("/api/tareas") -> Get, Post, Put, DeleteMapping
+@CrossOrigin("*") -> Cors, habilita el intercambio de recursos a cualquier dominio (cliente externo)
+
+2 FrontEnd Angular
+
+***Comandos
+ng new gestion-inventario-frontend -> Crear proyecto en angular
+
+mkdir components
+ng g c home -> crear pantalla de inicio
+ng g c login -> crear pantalla de login
+ng g c register -> crear pantalla de registro de usuario
+ng g c navbar -> crear menu
+
+mkdir models
+ng g class usuario
+
+mkdir services
+ng g service auth
+
+mkdir guards
+ng g guard auth
+
+mkdir interceptors
+ng g interceptor auth
+
+***Ejecutar***
+ng serve -o
+
+Conceptos:
+interceptors: componentes que modifican la petición, puede agregar algo al endpoint
+
+guards: Se encargan de controlar la rutas de la paginas (permitir o negar accesos a usuarios)
+
+models
+services -> Se conecta al API (backend)
+rxjs -> Librería de Programación reactivo ( Observable)
+
+
++ Conexion HTTP a una api 
