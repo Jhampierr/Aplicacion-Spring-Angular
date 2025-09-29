@@ -7,13 +7,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService); 
   const token = authService.getToken();
 
-  console.log('Interceptando URL:', req.url, 'Token:', token);
   // 🛑 excluye la URL de login
-  if (req.url.includes('/login')) {
+  if (req.url.includes('/auth/login')) {
     return next(req);
   }
 
-  console.log('Antes de validar token:', token);
   if (token) {
     req = req.clone({
       setHeaders: {
