@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { environment } from '../../environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-
-  private baseUrl = 'http://localhost:8080/api/auth';
+  private baseUrl = environment.api;
   
   constructor(private http:HttpClient, private router:Router) { }
 
@@ -17,7 +18,7 @@ export class AuthService {
     /*if(!this.http){
       throw new Error('Http client no inicializado')
     }*/
-    return this.http.post<{ token: string }>(`${this.baseUrl}/login`,{username, password})
+    return this.http.post<any>(`${this.baseUrl}/auth/login`,{username, password})
       .pipe(
         tap(response => {
           console.log('Respuesta del servidor: ', response)
@@ -42,7 +43,7 @@ export class AuthService {
     if(!this.http){
       throw new Error('Http client no inicializado')
     }
-    return this.http.post<any>(`${this.baseUrl}/registro`,{username, password})
+    return this.http.post<any>(`${this.baseUrl}/auth/registro`,{username, password})
     ?.pipe(
       catchError(this.handleError)
         /*error => {
@@ -58,12 +59,10 @@ export class AuthService {
   }
 
   getToken():string | null {
-    console.log('Entro al getToken', +1);
     return localStorage.getItem('token');
   }
 
   isAuthenticated():boolean {
-    console.log('Entro al isAuthenticated');
     //const token = this.getToken();
     return !!this.getToken();
   }

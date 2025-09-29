@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent {
           text: 'Bienvenido ' + this.username,
           icon: 'success'
         });
-        this.router.navigate(['/home']);
+        this.router.navigate(['/tareas']);
         console.log("Token de acceso: " + this.authService.getToken());
       },
       error : () => {

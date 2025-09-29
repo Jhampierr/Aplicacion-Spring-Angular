@@ -31,6 +31,7 @@ public class SecurityConfig {
         return httpSecurity
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/tareas/**").permitAll()  //Segunda ruta Endpoint
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
